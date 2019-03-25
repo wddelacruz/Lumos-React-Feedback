@@ -8,3 +8,4 @@ const server = app.listen(PORT, () => {
   console.log('App now listening on', PORT);
 });
 
+app.use(routes);
