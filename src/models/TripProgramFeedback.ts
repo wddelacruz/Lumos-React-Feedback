@@ -1,6 +1,7 @@
 import {
   prop,
   Typegoose,
+  InstanceType,
 } from 'typegoose';
 
 export class TripProgramFeedback extends Typegoose {
@@ -9,6 +10,8 @@ export class TripProgramFeedback extends Typegoose {
 }
 
 export const TripProgramFeedbackModel = new TripProgramFeedback().getModelForClass(TripProgramFeedback);
+
+export type TripProgramFeedbackType = InstanceType<TripProgramFeedback>;
 
 export namespace TripProgramFeedback {
   export enum HowDoesItCompare {
