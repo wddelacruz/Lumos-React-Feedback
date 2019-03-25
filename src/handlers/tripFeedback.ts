@@ -1,7 +1,5 @@
 import { RequestHandler } from "express";
-import {
-  UserFeedbackModel,
-} from "../models";
+import { UserFeedbackModel } from "../models";
 
 export namespace tripFeedback {
   export const post: RequestHandler = async (req, res, next) => {
