@@ -32,6 +32,8 @@ export const UserFeedbackModel = new UserFeedback().getModelForClass(UserFeedbac
 
 export namespace UserFeedback {
   export enum WhatBothersMostTrip {
+    CANT_STAY_ASLEEP = 'cant_stay_asleep',
+    SLEEPY_NEXT_DAY = 'sleepy_next_day',
   }
 
   export enum WhatBothersMostShift {
