@@ -2,6 +2,7 @@ import {
   prop,
   Typegoose,
   staticMethod,
+  InstanceType,
 } from 'typegoose';
 
 export class UserFeedback extends Typegoose {
@@ -29,6 +30,8 @@ export class UserFeedback extends Typegoose {
 }
 
 export const UserFeedbackModel = new UserFeedback().getModelForClass(UserFeedback);
+
+export type UserFeedbackType = InstanceType<UserFeedback>;
 
 export namespace UserFeedback {
   export enum WhatBothersMostTrip {
