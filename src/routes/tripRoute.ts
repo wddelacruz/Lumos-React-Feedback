@@ -10,6 +10,7 @@ tripRoute.post('/', [
   express.json(),
   validator.body('userId').isString(),
   validator.body('howItCompares').isString(),
+  validator.body('whatBothersMost').optional().isString(),
   validator.body('lightFlashesWokeUp').optional().isString(),
   tripFeedback.post,
 ]);

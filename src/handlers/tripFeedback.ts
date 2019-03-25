@@ -16,9 +16,13 @@ export namespace tripFeedback {
       let user = await UserFeedbackModel.findByUserId(req.body.userId);
       let trip = user.createTripFeedback();
 
+      if (req.body.whatBothersMost) {
+        user.whatBothersMostTrip = req.body.whatBothersMost;
+      }
       trip.howItCompares = req.body.howItCompares;
       trip.lightFlashesWokeUp = req.body.lightFlashesWokeUp;
 
+      await user.save();
       await trip.save();
 
       res.json(trip).once('finish', next);
