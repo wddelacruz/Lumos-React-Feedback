@@ -48,7 +48,7 @@ export type TripProgramFeedbackType = InstanceType<TripProgramFeedback>;
 export namespace TripProgramFeedback {
   export enum HowDoesItCompare {
     BETTER = 'better',
-    SAME = 'save',
+    SAME = 'same',
     WORSE = 'worse',
   }
 
