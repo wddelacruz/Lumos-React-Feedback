@@ -1,6 +1,14 @@
-import { Typegoose } from 'typegoose';
+import {
+  prop,
+  Typegoose,
+} from 'typegoose';
 
 export class TripProgramFeedback extends Typegoose {
+  @prop({ index: true })
+  userId?: string;
+
+  @prop({ enum: TripProgramFeedback.WhatBothersYouMost, index: true })
+  whatBothersMost?: TripProgramFeedback.WhatBothersYouMost;
 }
 
 export const TripProgramFeedbackModel = new TripProgramFeedback().getModelForClass(TripProgramFeedback);
