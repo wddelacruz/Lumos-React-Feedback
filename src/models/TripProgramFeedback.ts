@@ -7,6 +7,12 @@ import {
 export class TripProgramFeedback extends Typegoose {
   @prop({ index: true })
   userId?: string;
+
+  @prop({ index: true, enum: TripProgramFeedback.HowDoesItCompare })
+  howItCompares?: TripProgramFeedback.HowDoesItCompare;
+
+  @prop({ index: true, enum: TripProgramFeedback.YesNo })
+  lightFlashesWokeUp?: TripProgramFeedback.YesNo;
 }
 
 export const TripProgramFeedbackModel = new TripProgramFeedback().getModelForClass(TripProgramFeedback);
