@@ -12,9 +12,9 @@ export namespace TripProgramFeedback {
   }
 
   export enum HowDoesItCompare {
-    BETTER = 1,
-    SAME = 0,
-    WORSE = -1,
+    BETTER = 'better',
+    SAME = 'save',
+    WORSE = 'worse',
   }
 
   export enum YesNo {
