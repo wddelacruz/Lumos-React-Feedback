@@ -39,6 +39,11 @@ export class UserFeedback extends Typegoose {
     return trip;
   }
 
+  @instanceMethod
+  getTripProgramFeedback() {
+    return TripProgramFeedbackModel.find({ userId: this.userId });
+  }
+
 }
 
 export const UserFeedbackModel = new UserFeedback().getModelForClass(UserFeedback);
