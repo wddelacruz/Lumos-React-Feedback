@@ -3,7 +3,9 @@ import {
   Typegoose,
   staticMethod,
   InstanceType,
+  instanceMethod,
 } from 'typegoose';
+import { TripProgramFeedbackModel } from './TripProgramFeedback';
 
 export class UserFeedback extends Typegoose {
   @prop({ unique: true })
@@ -27,6 +29,16 @@ export class UserFeedback extends Typegoose {
 
     return user;
   }
+
+  @instanceMethod
+  createTripFeedback() {
+    let trip = new TripProgramFeedbackModel();
+    
+    trip.userId = this.userId;
+
+    return trip;
+  }
+
 }
 
 export const UserFeedbackModel = new UserFeedback().getModelForClass(UserFeedback);
