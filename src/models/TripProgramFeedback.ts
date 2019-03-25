@@ -2,7 +2,9 @@ import {
   prop,
   Typegoose,
   InstanceType,
+  staticMethod,
 } from 'typegoose';
+import { ObjectId } from 'bson';
 
 export class TripProgramFeedback extends Typegoose {
   @prop({ index: true })
@@ -13,6 +15,14 @@ export class TripProgramFeedback extends Typegoose {
 
   @prop({ index: true, enum: TripProgramFeedback.YesNo })
   lightFlashesWokeUp?: TripProgramFeedback.YesNo;
+
+  @staticMethod
+  static async findById(_id: string | ObjectId) {
+    if (typeof _id === 'string') {
+      _id = new ObjectId(_id);
+    }
+    return TripProgramFeedbackModel.findOne(_id);
+  }
 }
 
 export const TripProgramFeedbackModel = new TripProgramFeedback().getModelForClass(TripProgramFeedback);
