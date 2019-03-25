@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 import { validationResult } from "express-validator/check";
-import { UserFeedbackModel } from "../models";
+import { UserFeedbackModel, TripProgramFeedbackModel } from "../models";
 
 export namespace tripFeedback {
   export const post: RequestHandler = async (req, res, next) => {
@@ -30,6 +30,34 @@ export namespace tripFeedback {
       res.status(500).json({
         msg: `An error occured`,
         err,
+      }).once('finish', next);
+    }
+  }
+
+  export const put: RequestHandler = async (req, res, next) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(401).json({ errors: errors.array }).once('finish', next);
+      return;
+    }
+
+    try {
+      let trip = await TripProgramFeedbackModel.findById(req.params.id);
+
+      if (trip) {
+        trip.howItCompares = req.body.howItCompares;
+        trip.lightFlashesWokeUp = req.body.lightFlashesWokeUp;
+
+        res.json(await trip.save()).once('finish', next);
+      } else {
+        res.status(404).json({
+          msg: `Trip feedback not found`,
+        }).once('finish', next);
+      }
+    } catch (err) {
+      res.status(500).json({
+        msg: `An error occured`,
+        err
       }).once('finish', next);
     }
   }

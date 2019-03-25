@@ -14,3 +14,12 @@ tripRoute.post('/', [
   validator.body('lightFlashesWokeUp').optional().isString(),
   tripFeedback.post,
 ]);
+
+tripRoute.put('/:id', [
+  authentication.authentication,
+  express.json(),
+  validator.body('userId').isString(),
+  validator.body('howItCompares').optional().isString(),
+  validator.body('lightFlashesWokeUp').optional().isString(),
+  tripFeedback.put,
+]);
