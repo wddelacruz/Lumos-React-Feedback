@@ -1,6 +1,7 @@
 import {
   prop,
   Typegoose,
+  staticMethod,
 } from 'typegoose';
 
 export class UserFeedback extends Typegoose {
@@ -12,6 +13,19 @@ export class UserFeedback extends Typegoose {
 
   @prop({ index: true, enum: UserFeedback.WhatBothersMostShift })
   whatBothersMostShift?: UserFeedback.WhatBothersMostShift;
+
+  @staticMethod
+  static async findByUserId(userId: string) {
+    let user = await UserFeedbackModel.findOne({ userId });
+
+    if (!user) {
+      user = new UserFeedbackModel();
+      user.userId = userId;
+      await user.save();
+    }
+
+    return user;
+  }
 }
 
 export const UserFeedbackModel = new UserFeedback().getModelForClass(UserFeedback);
