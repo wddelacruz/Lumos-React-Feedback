@@ -8,8 +8,8 @@ export const tripRoute = express.Router();
 tripRoute.post('/', [
   authentication.authentication,
   express.json(),
-  validator.body('userId').exists().isString(),
-  validator.body('howItCompares').exists().isString(),
+  validator.body('userId').isString(),
+  validator.body('howItCompares').isString(),
   validator.body('lightFlashesWokeUp').optional().isString(),
   tripFeedback.post,
 ]);
