@@ -10,6 +10,7 @@ tripRoute.post('/', [
   authentication.authentication,
   body.json(),
   validator.body('userId').exists().isString(),
-  validator.body('lightFlashesWakeUp').optional().isString(),
+  validator.body('howItCompares').exists().isString(),
+  validator.body('lightFlashesWokeUp').optional().isString(),
   tripFeedback.post,
 ]);
