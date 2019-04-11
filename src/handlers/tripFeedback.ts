@@ -27,6 +27,7 @@ export namespace tripFeedback {
 
       res.json(trip).once('finish', next);
     } catch (err) {
+      console.error(err);
       res.status(500).json({
         msg: `An error occured`,
         err,
@@ -55,6 +56,7 @@ export namespace tripFeedback {
         }).once('finish', next);
       }
     } catch (err) {
+      console.error(err);
       res.status(500).json({
         msg: `An error occured`,
         err
