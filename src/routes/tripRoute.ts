@@ -9,9 +9,9 @@ tripRoute.post('/', [
   authentication.authentication,
   express.json(),
   validator.body('userId').isString(),
-  validator.body('howItCompares').isString(),
-  validator.body('whatBothersMost').optional().isString(),
-  validator.body('lightFlashesWokeUp').optional().isString(),
+  validator.body('howItCompares').optional({ nullable: true }).isString(),
+  validator.body('whatBothersMost').optional({ nullable: true }).isString(),
+  validator.body('lightFlashesWokeUp').optional({ nullable: true }).isString(),
   tripFeedback.post,
 ]);
 
@@ -19,7 +19,7 @@ tripRoute.put('/:id', [
   authentication.authentication,
   express.json(),
   validator.body('userId').isString(),
-  validator.body('howItCompares').optional().isString(),
-  validator.body('lightFlashesWokeUp').optional().isString(),
+  validator.body('howItCompares').optional({ nullable: true }).isString(),
+  validator.body('lightFlashesWokeUp').optional({ nullable: true }).isString(),
   tripFeedback.put,
 ]);
