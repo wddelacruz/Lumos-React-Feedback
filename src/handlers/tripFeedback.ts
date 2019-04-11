@@ -49,7 +49,7 @@ export namespace tripFeedback {
         trip.howItCompares = req.body.howItCompares;
         trip.lightFlashesWokeUp = req.body.lightFlashesWokeUp;
 
-        res.json(await trip.save()).once('finish', next);
+        res.status(204).json(await trip.save()).once('finish', next);
       } else {
         res.status(404).json({
           msg: `Trip feedback not found`,
