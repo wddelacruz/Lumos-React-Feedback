@@ -25,7 +25,7 @@ export namespace tripFeedback {
       await user.save();
       await trip.save();
 
-      res.json(trip).once('finish', next);
+      res.status(201).json(trip).once('finish', next);
     } catch (err) {
       console.error(err);
       res.status(500).json({
