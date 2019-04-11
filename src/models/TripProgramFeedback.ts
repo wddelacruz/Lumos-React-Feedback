@@ -20,10 +20,10 @@ export class TripProgramFeedback extends Typegoose {
   @prop({ index: true })
   userId?: string;
 
-  @prop({ index: true, enum: TripProgramFeedback.HowDoesItCompare })
+  @prop({ index: true })
   howItCompares?: TripProgramFeedback.HowDoesItCompare;
 
-  @prop({ index: true, enum: TripProgramFeedback.YesNo })
+  @prop({ index: true })
   lightFlashesWokeUp?: TripProgramFeedback.YesNo;
 
   @prop({ index: true })
@@ -46,14 +46,7 @@ export const TripProgramFeedbackModel = new TripProgramFeedback().getModelForCla
 export type TripProgramFeedbackType = InstanceType<TripProgramFeedback>;
 
 export namespace TripProgramFeedback {
-  export enum HowDoesItCompare {
-    BETTER = 'better',
-    SAME = 'same',
-    WORSE = 'worse',
-  }
+  export type HowDoesItCompare = 'better' | 'same' | 'worse';
 
-  export enum YesNo {
-    YES = 'YES',
-    NO = 'NO',
-  }
+  export type YesNo = 'yes' | 'no';
 }
