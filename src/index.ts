@@ -9,3 +9,8 @@ const server = app.listen(PORT, () => {
 });
 
 app.use(routes);
+
+app.use((req, res, next) => {
+  console.log(req.method, req.path, ':', res.statusCode, res.statusMessage);
+  next();
+});
